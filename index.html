@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="css/estilos.css">
+	<!-- Buttons DataTables -->
+	<link rel="stylesheet" href="css/buttons.bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+</head>
+<body>
+	<div class="row fondo">
+		<div class="col-sm-12 col-md-12 col-sm-3">
+			<h1 class="text-center text-uppercase">DataTables - Ajax - PHP - MySql / MariaDB</h1>
+		</div>
+	</div>
+	
+	
+	<div class="row">
+		<div id="cuadro1" class="col-sm-8 col-sm-8 col-sm-8">
+			<div class="col-sm-offset-2 col--8">
+				<h3 class="text-center"> <small class="mensaje"></small></h3>
+			</div>
+			<div class="table-responsive" class="display">		
+				<table id="dt_cliente" class="table table-bordered table-hover" cellspacing="0">
+					<thead>
+						<tr>								
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Email</th>
+							<th>Telefono</th>											
+						</tr>
+					</thead>					
+				</table>
+			</div>			
+		</div>		
+	</div>
+	<div>
+
+	
+	<script src="js/jquery-1.12.3.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
+	<script src="js/dataTables.bootstrap.js"></script>
+	<!--botones DataTables-->	
+	<script src="js/dataTables.buttons.min.js"></script>
+	<script src="js/buttons.bootstrap.min.js"></script>
+	<!--Libreria para exportar Excel-->
+	<script src="js/jszip.min.js"></script>
+	<!--Librerias para exportar PDF-->
+	<script src="js/pdfmake.min.js"></script>
+	<script src="js/vfs_fonts.js"></script>
+	<!--Librerias para botones de exportación-->
+	<script src="js/buttons.html5.min.js"></script>
+
+	<script>		
+		$(document).on("ready", function(){
+			listar();
+		});
+
+		var listar = function(){
+			var tabla = $("#dt_cliente").DataTable({
+                  "ajax" :{
+                  	 "method":"POST",
+                  	 "url":"listar.php"
+                  	 
+                  },
+                  "columns": [
+                        {"data":"nombre"},
+                         {"data":"apellido"},
+                          {"data":"email"},
+                           {"data":"telefono"}
+
+                  ]
+			});
+		}
+
+		
+
+
+		
+		
+
+	</script>
+</body>
+</html>
